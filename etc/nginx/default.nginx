@@ -11,14 +11,14 @@ server {
     listen 7860 ssl;
     listen [::]:7860 ssl;
 
-    ssl_certificate /home/USER/starter-app/etc/ssl/CERTIFICATE.crt;
-    ssl_certificate_key /home/USER/starter-app/etc/ssl/CERT_PRIVATE_KEY.key;
+    ssl_certificate /home/dev/fluent_docs/etc/ssl/CERTIFICATE.crt;
+    ssl_certificate_key /home/dev/fluent_docs/etc/ssl/CERT_PRIVATE_KEY.key;
 
     root /var/www/html;
     index index.php index.html index.htm;
 
-    server_name SERVER.DOMAIN.TLD;
-    if ($host != "SERVER.DOMAIN.TLD") {
+    server_name ADMIN.MEDIAPARK.WORK;
+    if ($host != "ADMIN.MEDIAPARK.WORK") {
         return 403;
     }
 
@@ -35,6 +35,6 @@ server {
         deny all;
     }
 
-    error_log /home/USER/starter-app/tmp/log/frontend_error.log;
-    access_log /home/USER/starter-app/tmp/log/frontend_access.log;
+    error_log /home/dev/fluent_docs/tmp/log/frontend_error.log;
+    access_log /home/dev/fluent_docs/tmp/log/frontend_access.log;
 }

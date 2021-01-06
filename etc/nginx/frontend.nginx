@@ -5,14 +5,14 @@ server {
     listen 443 ssl;
     listen [::]:443 ssl;
 
-    ssl_certificate /home/USER/starter-app/etc/ssl/CERTIFICATE.crt;
-    ssl_certificate_key /home/USER/starter-app/etc/ssl/CERT_PRIVATE_KEY.key;
+    ssl_certificate /home/dev/fluent_docs/etc/ssl/CERTIFICATE.crt;
+    ssl_certificate_key /home/dev/fluent_docs/etc/ssl/CERT_PRIVATE_KEY.key;
 
-    root /home/USER/starter-app/src/www/frontend;
+    root /home/dev/fluent_docs/src/www/frontend;
     index index.php index.html index.htm;
 
-    server_name DOMAIN.TLD;
-    if ($host != "DOMAIN.TLD") {
+    server_name FRONT.MEDIAPARK.WORK;
+    if ($host != "FRONT.MEDIAPARK.WORK") {
         return 403;
     }
 
@@ -53,8 +53,8 @@ server {
         deny all;
     }
 
-    error_log /home/USER/starter-app/tmp/log/frontend_error.log;
-    access_log /home/USER/starter-app/tmp/log/frontend_access.log;
+    error_log /home/dev/fluent_docs/tmp/log/frontend_error.log;
+    access_log /home/dev/fluent_docs/tmp/log/frontend_access.log;
 }
 
 # Frontend (DEVELOPMENT) Mode (on SSL port 8443)
@@ -62,14 +62,14 @@ server {
     listen 8443 ssl;
     listen [::]:8443 ssl;
 
-    ssl_certificate /home/USER/starter-app/etc/ssl/CERTIFICATE.crt;
-    ssl_certificate_key /home/USER/starter-app/etc/ssl/CERT_PRIVATE_KEY.key;
+    ssl_certificate /home/dev/fluent_docs/etc/ssl/CERTIFICATE.crt;
+    ssl_certificate_key /home/dev/fluent_docs/etc/ssl/CERT_PRIVATE_KEY.key;
 
-    root /home/USER/starter-app/src/www/frontend;
+    root /home/dev/fluent_docs/src/www/frontend;
     index index_dev.php index.html index.htm;
 
-    server_name DOMAIN.TLD;
-    if ($host != "DOMAIN.TLD") {
+    server_name FRONT.MEDIAPARK.WORK;
+    if ($host != "FRONT.MEDIAPARK.WORK") {
         return 403;
     }
 
@@ -110,6 +110,6 @@ server {
         deny all;
     }
 
-    error_log /home/USER/starter-app/tmp/log/frontend_error.log;
-    access_log /home/USER/starter-app/tmp/log/frontend_access.log;
+    error_log /home/dev/fluent_docs/tmp/log/frontend_error.log;
+    access_log /home/dev/fluent_docs/tmp/log/frontend_access.log;
 }
