@@ -66,7 +66,7 @@ server {
     ssl_certificate_key /home/dev/fluent_docs/etc/ssl/CERT_PRIVATE_KEY.key;
 
     root /home/dev/fluent_docs/src/www/frontend;
-    index index_dev.php index.html index.htm;
+    index index.php index.html index.htm;
 
     server_name FRONT.MEDIAPARK.WORK;
     if ($host != "FRONT.MEDIAPARK.WORK") {
