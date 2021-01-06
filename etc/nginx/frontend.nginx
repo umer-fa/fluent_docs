@@ -27,7 +27,7 @@ server {
     # Allowed PHP scripts
     # Use "|" as separator within regex group below, i.e. to allow "phpinfo.php" modify it as (index|phpinfo)
     location ~ ^/(index)\.php(/|$) {
-        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
 
         # Make sure this file does exists,
@@ -84,7 +84,7 @@ server {
     # Allowed PHP scripts
     # Use "|" as separator within regex group below, i.e. to allow "phpinfo.php" modify it as (index|phpinfo)
     location ~ ^/(index\_dev)\.php(/|$) {
-        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
 
         # Make sure this file does exists,
