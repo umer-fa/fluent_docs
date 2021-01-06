@@ -1,0 +1,4 @@
+# Sessions Configuration
+sessions:
+  # Cookie name (can be null to not set/get session IDs from cookie)
+  cookie: COMELYSESSID

@@ -1,0 +1,115 @@
+# Frontend (Prod) on public ports 80 and 443 (SSL)
+server {
+    listen 80;
+    listen [::]:80;
+    listen 443 ssl;
+    listen [::]:443 ssl;
+
+    ssl_certificate /home/USER/starter-app/etc/ssl/CERTIFICATE.crt;
+    ssl_certificate_key /home/USER/starter-app/etc/ssl/CERT_PRIVATE_KEY.key;
+
+    root /home/USER/starter-app/src/www/frontend;
+    index index.php index.html index.htm;
+
+    server_name DOMAIN.TLD;
+    if ($host != "DOMAIN.TLD") {
+        return 403;
+    }
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ ^[\w\-\/]+$ {
+        try_files $uri /index.php$is_args$args;
+    }
+
+    # Allowed PHP scripts
+    # Use "|" as separator within regex group below, i.e. to allow "phpinfo.php" modify it as (index|phpinfo)
+    location ~ ^/(index)\.php(/|$) {
+        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+
+        # Make sure this file does exists,
+        # Return 404 instead of "No input file specified." error message
+        try_files $fastcgi_script_name =404;
+
+        # Include fastcgi_params and set required SCRIPT_FILENAME explicitly
+        include fastcgi_params;
+        # Use $realpath_root instead of $document_root to resolve any symbolic links
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+
+        # Uncomment internal line below to disable /index.php/some/path type access
+        internal;
+    }
+
+    location ~ \.php$ {
+        # Disable all other PHP scripts
+        return 404;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    error_log /home/USER/starter-app/tmp/log/frontend_error.log;
+    access_log /home/USER/starter-app/tmp/log/frontend_access.log;
+}
+
+# Frontend (DEVELOPMENT) Mode (on SSL port 8443)
+server {
+    listen 8443 ssl;
+    listen [::]:8443 ssl;
+
+    ssl_certificate /home/USER/starter-app/etc/ssl/CERTIFICATE.crt;
+    ssl_certificate_key /home/USER/starter-app/etc/ssl/CERT_PRIVATE_KEY.key;
+
+    root /home/USER/starter-app/src/www/frontend;
+    index index_dev.php index.html index.htm;
+
+    server_name DOMAIN.TLD;
+    if ($host != "DOMAIN.TLD") {
+        return 403;
+    }
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ ^[\w\-\/]+$ {
+        try_files $uri /index_dev.php$is_args$args;
+    }
+
+    # Allowed PHP scripts
+    # Use "|" as separator within regex group below, i.e. to allow "phpinfo.php" modify it as (index|phpinfo)
+    location ~ ^/(index\_dev)\.php(/|$) {
+        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+
+        # Make sure this file does exists,
+        # Return 404 instead of "No input file specified." error message
+        try_files $fastcgi_script_name =404;
+
+        # Include fastcgi_params and set required SCRIPT_FILENAME explicitly
+        include fastcgi_params;
+        # Use $realpath_root instead of $document_root to resolve any symbolic links
+        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+        fastcgi_param DOCUMENT_ROOT $realpath_root;
+
+        # Uncomment internal line below to disable /index.php/some/path type access
+        internal;
+    }
+
+    location ~ \.php$ {
+        # Disable all other PHP scripts
+        return 404;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    error_log /home/USER/starter-app/tmp/log/frontend_error.log;
+    access_log /home/USER/starter-app/tmp/log/frontend_access.log;
+}

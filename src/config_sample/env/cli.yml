@@ -1,0 +1,18 @@
+# Comely App
+# Environment configuration: CLI
+
+# Specify a valid time zone, i.e. "Europe/London"
+time_zone: "Europe/London"
+
+# Imports
+imports:
+  - ../site.yml
+  - ../databases.yml
+
+# Services
+# Remove or comment-out any import entry to disable that service
+services:
+  imports:
+    - ../services/cache.yml
+    - ../services/cipher.yml
+    - ../services/mailer.yml

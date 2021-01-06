@@ -1,0 +1,5 @@
+{knit "header"}
+<h1>{$page.title}!</h1>
+<p>Your remote IP address is: <strong>{$remote.ipAddress}</strong></p>
+{$page|var_dump}
+{knit "footer"}

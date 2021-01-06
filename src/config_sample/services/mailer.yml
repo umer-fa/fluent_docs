@@ -1,0 +1,25 @@
+# Mailer Configuration
+mailer:
+  # Which agent to use for sending email messages?
+  # sendmail|smtp
+  agent: smtp
+  # Set name and e-mail address of default sender
+  sender:
+    name: Untitled Project
+    email: noreply@domain.com
+  # Configure SMTP
+  smtp:
+    host: smtp.domain.com
+    port: 587
+    # Timeout in seconds
+    time_out: 1
+    # Start TLS upon successful connection? Default true
+    tls: true
+    # Authentication type? login|plain
+    auth: login
+    # Authentication credentials
+    username: "postmaster@domain.com"
+    password: ~
+    # Server name
+    # Set your FQDN here. Leave null for auto detect
+    server_name: ~

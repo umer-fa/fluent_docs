@@ -1,0 +1,5 @@
+errors:
+  internal: An internal error has occured near %s
+
+success:
+  auth: You have been authenticated!

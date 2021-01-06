@@ -1,0 +1,10 @@
+# Translator Service Configuration
+translator:
+  # Translator cookie name (can be NULL/~)
+  cookie: COMELYLANG
+  # Fallback
+  # If a certain translation is not found in main language, it will be picked from fallback language, defaults to "en-us"
+  fallback: en-us
+  # Caching
+  # Cache compiled language object? Recommended value is YES
+  caching: on

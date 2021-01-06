@@ -1,0 +1,17 @@
+# Databases Configuration
+databases:
+  # Primary database ID/Node
+  primary:
+    # Database type
+    # mysql|sqlite|pgsql
+    driver: mysql
+    # Hostname (i.e. localhost)
+    host: localhost
+    # Name of database
+    name: dbname
+    # Database connection username
+    # Username may be set to null/~ for no username
+    username: root
+    # Database password
+    # Password may be set to null/~ for no password
+    password: ~

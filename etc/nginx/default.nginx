@@ -1,0 +1,40 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+    server_name _;
+    return 444;
+}
+
+# Default server block
+server {
+    listen 7860 ssl;
+    listen [::]:7860 ssl;
+
+    ssl_certificate /home/USER/starter-app/etc/ssl/CERTIFICATE.crt;
+    ssl_certificate_key /home/USER/starter-app/etc/ssl/CERT_PRIVATE_KEY.key;
+
+    root /var/www/html;
+    index index.php index.html index.htm;
+
+    server_name SERVER.DOMAIN.TLD;
+    if ($host != "SERVER.DOMAIN.TLD") {
+        return 403;
+    }
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+
+    error_log /home/USER/starter-app/tmp/log/frontend_error.log;
+    access_log /home/USER/starter-app/tmp/log/frontend_access.log;
+}

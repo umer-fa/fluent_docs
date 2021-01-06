@@ -1,0 +1,8 @@
+# App Website Configuration
+site:
+  # Project/website Title
+  title: "Untitled Project"
+  # Domain name
+  domain: "domain.com"
+  # Use HTTPS?
+  https: yes

@@ -1,0 +1,14 @@
+# Http Service Configuration
+http:
+  # Http Cookies Configuration
+  cookies:
+    # Cookie expiry, recommended value is 30d
+    expire: 2d
+    # Cookie path, recommended value is "/"
+    path: "/"
+    # Leave null or "~" for auto-fill cookie domain
+    domain: ~
+    # Cookies over SSL only? Recommended if you have SSL
+    secure: yes
+    # Recommended value is "yes"
+    http_only: yes

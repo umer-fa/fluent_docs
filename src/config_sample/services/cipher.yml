@@ -1,0 +1,11 @@
+# Cipher Configuration
+# ---
+# Encryption keys should be generated using a cryptographically secure methods, such as:
+# Comely\Utils\Security\PRNG::randomBytes(32) OR run via CLI "./console prng_cipher_key"
+cipher:
+  # If a cipher key is 32 byte entropy in hexadecimal representation (64 hexits), value is used as-is.
+  # If a cipher key is a string of variable length and characters, it will be hashed to get 32 byte of entropy.
+  primary: "enter some random words here"
+  # You should use individual/separate keys to encrypt different aspects of your apps, i.e. all things users related
+  # should use a separate key labelled as "users"
+  # users: "this is another cipher key"

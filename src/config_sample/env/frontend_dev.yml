@@ -1,0 +1,13 @@
+# Comely App
+# Environment configuration: frontend_dev
+
+# Import Frontend PROD env
+imports:
+  - frontend.yml
+
+# Changes for DEV env
+services:
+  # Translator service config
+  translator:
+    # Disable caching of language files
+    caching: off

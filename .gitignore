@@ -1,0 +1,8 @@
+.idea/
+composer.lock
+composer.phar
+workspace/
+
+vendor/
+src/config/
+tmp/
